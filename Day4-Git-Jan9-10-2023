@@ -1,0 +1,57 @@
+1- What is Git and Github
+2- Different Version control system - Centralized VCS and Distributed VCS
+3- Git commands:
+
+git init: To initialze the directory. It will create .git directory. It creates empty git repository.
+When we save file in git that is being saved in .git folder
+
+git status: Provides repository status
+
+git add filename : to add file in staging area which will be tracked by git 
+
+git commit -m "message" : Commit the tracked files in git repository.
+
+git log: provide details of file like Author, Hasdhid, Date
+
+git restore file_name: To bring back or rever the changes. If file is delete from local system but it is present in git repository that can be restored by this command.
+
+git clone git_repo_from_github: To clone repository from github. Clones the already created repository
+
+git remote -v: Remote connection of repository from local to remote. It shows if local repository is linked to any remote github repository.
+
+git remote add origin github_repo_url: origin is varaiable which has remote url(github url)
+
+git remote set-url origin https://token@github_repo.rpeo : To change origin value. We are setting here origin with access token so while pushing to github git will not ask for credentials.
+
+git push origin master: To push the files/dir to the remote diretory i.e on github repository.
+
+git checkout -b branch_name : -b Create branch from master/main. Also it will switch to new created branch.
+
+git checkout master: To swich to master branch.
+
+git status: It will also give on which branch you are in now currently.
+
+git push origin new_branch: It will create new branch ib github and push the chnages in it.
+
+git merge new_branch: It merges changes to main branch. Before this swtich to main branch git checkout master and then run merge command.
+
+fork: It will copy repository to our github. .git repositor from where we fork the git repository and .git repository in our system will be different, it will not be linked.
+
+sync fork: It will sync the changes from the main repository to the fork repository.
+
+
+Pull request: It is used in remote to merge the branches. In background it runs git merge command.
+
+
+clone: When we clone any repository .git directory is linked. 
+So if we make any changes on local from our end and push, it will directly push to the original repository from where we have cloned it.
+Also whatever changed are being made in main repository will not be reflected in cloned one.
+
+
+
+
+Git stages:
+1- Working Directory- Files/directories in local system. Untracted files
+2- Staging area - When we bring files in staging area those becomes Tracked files/directories. Git is trcaking files now. Using git add to bring file from working to staging area.
+3- Git repository- Files saved in git repository from staging area. Using git commit
+
