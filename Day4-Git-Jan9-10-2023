@@ -56,3 +56,7 @@ Also whatever changed are being made in main repository will not be reflected in
 2- Staging area - When we bring files in staging area those becomes Tracked files/directories. Git is trcaking files now. Using git add to bring file from working to staging area.
 3- Git repository- Files saved in git repository from staging area. Using git commit
 
+****Below commands to set global username and emaild for git locally****
+
+git config --global user.name "user_name"
+git config --global user.email "email_id"
