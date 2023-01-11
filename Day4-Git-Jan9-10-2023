@@ -35,6 +35,9 @@ When we save file in git that is being saved in .git folder
 
 16- git merge new_branch: It merges changes to main branch. Before this swtich to main branch git checkout master and then run merge command.
 
+17- git branch: List of branches in git repository
+
+18- git branch -d branch_name: To delete the branch
 
 *** fork: It will copy repository to our github. .git repositor from where we fork the git repository and .git repository in our system will be different, it will not be linked.
 
