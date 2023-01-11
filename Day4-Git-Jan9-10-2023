@@ -54,7 +54,7 @@ Also whatever changed are being made in main repository will not be reflected in
 
 
 
-*** Git stages: ***
+*** Git stages: **
 1- Working Directory- Files/directories in local system. Untracted files
 2- Staging area - When we bring files in staging area those becomes Tracked files/directories. Git is trcaking files now. Using git add to bring file from working to staging area.
 3- Git repository- Files saved in git repository from staging area. Using git commit
