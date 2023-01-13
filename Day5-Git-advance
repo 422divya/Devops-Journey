@@ -1,0 +1,33 @@
+1- HEAD=> It points to the latest commit made in particular branch.
+
+If you create new branch from main branch then in bith the branch will point to same latest commit, but if you add anything in new branch and then commit it then HEAD will be pointing to latest commit, so HEAD in new branch will be ahead of main branch.
+
+git log or git log --oneline ===> to check the HEAD pointer
+
+2- git diff: Compares the file and shows the difference.
+
+If there is file first.txt and commit it in git, but you made some changes in first.txt, then git diff will show the difference, what was added deleted from initial file.
+
+Shows difference between old state and new state.
+
+3- git restore file_name: It will restore the original file from git. If you have made any changes to file locally but NOT COMMITED ON GIT then git restore will retore the file.
+
+4- git revert commit_id: Cannot restore file, it revert the commited file.
+
+==> If we have made any changes on file and commited it, we cannot restore it using restore command, to bring file to initial state we need to run revert command so that the commit will be reverted.
+Using "git log" take the id of the commite that need to be reverted.
+
+==> git revert do not delete the file. It revert the commit made on the file. If the file was added and you revert that then that file will be deleted
+
+==> Revert will also generate the hash id, everything in git is the commit and will generate the hash id.
+
+5- git reset --soft commit_id==> commit id till where you need to reset the branch. Suppose there are 5 commit made and you need only first 2 commit made and latest 3 commit to vanish, so we need to give commit id of the 2nd commit id.
+Reset will not store the commit ids, no one will understand that reset was made, but revert will store the commit id. 
+The changes made in file in file4, file5 will be in modified state fir file3. If you run "git status" it will show file3 in modified state and not in commit state.
+So whatever code was written in file4 file 5 and commited will be still there in file3, but not commited.
+
+soft reset: normal smooth reset 
+hard reset: force reset, it will delete the files while resetting. Suppose if we addd file1 and commited that file then commit id is created for it, if we perform hard reset to previous reset the file1 will be deleted.
+But if we perform soft reset it will comes back to previous commit but will not delete file1.
+
+6- Cherry pick: 
