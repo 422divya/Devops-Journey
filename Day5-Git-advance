@@ -26,8 +26,11 @@ Reset will not store the commit ids, no one will understand that reset was made,
 The changes made in file in file4, file5 will be in modified state fir file3. If you run "git status" it will show file3 in modified state and not in commit state.
 So whatever code was written in file4 file 5 and commited will be still there in file3, but not commited.
 
+Using reset we cannot again get the file or changes we removed as it does not make any commit but using revert we can get the file/chnages that we reverted as revert keeps the history of it in commit log.
+
 soft reset: normal smooth reset 
 hard reset: force reset, it will delete the files while resetting. Suppose if we addd file1 and commited that file then commit id is created for it, if we perform hard reset to previous reset the file1 will be deleted.
 But if we perform soft reset it will comes back to previous commit but will not delete file1.
+
 
 6- Cherry pick: 
