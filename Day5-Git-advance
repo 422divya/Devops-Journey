@@ -1,6 +1,6 @@
 1- HEAD=> It points to the latest commit made in particular branch.
 
-If you create new branch from main branch then in bith the branch will point to same latest commit, but if you add anything in new branch and then commit it then HEAD will be pointing to latest commit, so HEAD in new branch will be ahead of main branch.
+If you create new branch from main branch then both the branch will point to same latest commit, but if you add anything in new branch and then commit it then HEAD will be pointing to latest commit, so HEAD in new branch will be ahead of main branch.
 
 git log or git log --oneline ===> to check the HEAD pointer
 
@@ -28,8 +28,9 @@ So whatever code was written in file4 file 5 and commited will be still there in
 
 Using reset we cannot again get the file or changes we removed as it does not make any commit but using revert we can get the file/chnages that we reverted as revert keeps the history of it in commit log.
 
-soft reset: normal smooth reset 
-hard reset: force reset, it will delete the files while resetting. Suppose if we addd file1 and commited that file then commit id is created for it, if we perform hard reset to previous reset the file1 will be deleted.
+soft reset: Normal reset, it will reset the branch till the commit we have passed as the input. The file will be in staging area
+
+hard reset: It forcefully reset the branch. It will delete the files/content while resetting. Suppose if we add file1 and commited that file then commit id is created for it, if we perform hard reset to previous reset the file1 will be deleted.
 But if we perform soft reset it will comes back to previous commit but will not delete file1.
 
 
