@@ -4,7 +4,7 @@ If you create new branch from main branch then both the branch will point to sam
 
 git log or git log --oneline ===> to check the HEAD pointer
 
-2- git diff: Compares the file and shows the difference.
+2- git diff: Compares the file between working directory and the git repository and shows the difference.
 
 If there is file first.txt and commit it in git, but you made some changes in first.txt, then git diff will show the difference, what was added deleted from initial file.
 
