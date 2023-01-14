@@ -52,4 +52,4 @@ If you want to pull the content inspite of different changes you can use rebase 
 
 Conflict happens when more people change same file.
 
-Now you have option to accept both changes, accept incoming changes(means change came afterwards), accept current change(recent change), select the options to solve the conflict
+Now you have option to accept both changes, accept incoming changes(means change came afterwards), accept current change(recent change where HEAD is pointing), select the options to solve the conflict
