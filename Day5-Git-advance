@@ -53,3 +53,6 @@ If you want to pull the content inspite of different changes you can use rebase 
 Conflict happens when more people change same file.
 
 Now you have option to accept both changes, accept incoming changes(means change came afterwards), accept current change(recent change where HEAD is pointing), select the options to solve the conflict
+
+Example of conflict: So if one has made changes in code and some other developer has also made some changes in same code and if both of the try to commit it it will create conflict, so to solve it they need to decide which one to keep and which one to delete and it will resolve conflict.
+
