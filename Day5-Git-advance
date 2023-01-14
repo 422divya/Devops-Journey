@@ -38,4 +38,18 @@ hard reset: It forcefully reset the branch. It will delete the files/content whi
 But if we perform soft reset it will comes back to previous commit but will not delete file1.
 
 
-6- Cherry pick: 
+6- Cherry pick: To go to particular commit.
+
+git cherry-pick commit_id
+
+Conflict: When we cherry pick the cmooit there may be conflict issue. Conflict happens when git head points to different content and when we cherrypick the commit it has some different content, so git does not know which one to pick and conflicts happens. 
+So its upon us to know which one to have. When we edit that file you will see the HEAD points to different content and the commit we want to cherrypick points to different one.
+
+We can decide which one we want.
+
+rebase: If there is changes made in local git and someone had made chnages in remote git in same file but different content, if you try to git pull that branch on local then it will give error of branch divergence and will not pull the content in local.
+If you want to pull the content inspite of different changes you can use rebase "git pull origin branch_name --rebase". It will show the error of conflict now.
+
+Conflict happens when more people change same file.
+
+Now you have option to accept both changes, accept incoming changes(means change came afterwards), accept current change(recent change), select the options to solve the conflict
