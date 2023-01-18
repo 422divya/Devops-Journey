@@ -42,7 +42,7 @@ But if we perform soft reset it will comes back to previous commit but will not 
 
 git cherry-pick commit_id
 
-Conflict: When we cherry pick the cmooit there may be conflict issue. Conflict happens when git head points to different content and when we cherrypick the commit it has some different content, so git does not know which one to pick and conflicts happens. 
+Conflict: When we cherry pick the commit there may be conflict issue. Conflict happens when git head points to different content and when we cherrypick the commit it has some different content, so git does not know which one to pick and conflicts happens. 
 So its upon us to know which one to have. When we edit that file you will see the HEAD points to different content and the commit we want to cherrypick points to different one.
 
 We can decide which one we want.
@@ -50,9 +50,36 @@ We can decide which one we want.
 rebase: If there is changes made in local git and someone had made chnages in remote git in same file but different content, if you try to git pull that branch on local then it will give error of branch divergence and will not pull the content in local.
 If you want to pull the content inspite of different changes you can use rebase "git pull origin branch_name --rebase". It will show the error of conflict now.
 
-Conflict happens when more people change same file.
+Conflict happens when more than one people change same file.
 
 Now you have option to accept both changes, accept incoming changes(means change came afterwards), accept current change(recent change where HEAD is pointing), select the options to solve the conflict
 
-Example of conflict: So if one has made changes in code and some other developer has also made some changes in same code and if both of the try to commit it it will create conflict, so to solve it they need to decide which one to keep and which one to delete and it will resolve conflict.
+Example of conflict: So if one has made changes in code and some other developer has also made some changes in same code and if both of the try to commit, it will create conflict, so to solve it they need to decide which one to keep and which one to delete and it will resolve conflict.
 
+
+So if conflict happens when we cherry pick or rebasethen fix conflict and then commit file again and again perform cherry pick or rebase as confict had occured at that time.
+
+
+
+- Merge and Rebase:
+
+1- Merge: To merge the commit of branches. To merge the changes from dev branch to master branch you can use merge which will add the latest commit of dev branch to the master branch.
+
+git merge branch_name : HEAD of both branch will point at same commit. Also all the commit of dev branch will be shown in "git log --oneline" which was modified on dev branch after creating new branch from master.
+
+2- Rebase: It merges commit of master to dev and dev to master. So Master and dev branch have all commits of each other. It is to sync both the branches.
+
+# git checkout master
+# git rebase dev
+
+# git checkout dev
+# git rebase master
+
+
+- Squash: To combine all he commits into one. While merging the branch in another branch all the commits are merge, so to avoid lots of commit logs we can use squash to combine all commit logs in one
+
+git checkout master : You are now in master branch
+
+git merge--squash dev && git commit -m "squash all the commit of dev beanch in one" : This will merge dev branch into master and will combine all the commit in one.
+
+git log --oneline
