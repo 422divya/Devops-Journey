@@ -42,6 +42,9 @@ But if we perform soft reset it will comes back to previous commit but will not 
 
 git cherry-pick commit_id
 
+git cherry-pick commit_id -n: We can also cherry pick without commiting it to the specific branch. So we can make changes and then commit it.
+
+
 Conflict: When we cherry pick the commit there may be conflict issue. Conflict happens when git head points to different content and when we cherrypick the commit it has some different content, so git does not know which one to pick and conflicts happens. 
 So its upon us to know which one to have. When we edit that file you will see the HEAD points to different content and the commit we want to cherrypick points to different one.
 
@@ -63,11 +66,11 @@ So if conflict happens when we cherry pick or rebasethen fix conflict and then c
 
 - Merge and Rebase:
 
-1- Merge: To merge the commit of branches. To merge the changes from dev branch to master branch you can use merge which will add the latest commit of dev branch to the master branch. It will not perform new commits.
+1- Merge: To merge the commit of branches. To merge the changes from dev branch to master branch you can use merge which will add the latest commit of dev branch to the master branch. It will not perform new commits so the commit hash id remain same.
 
 git merge branch_name : HEAD of both branch will point at same commit. Also all the commit of dev branch will be shown in "git log --oneline" which was modified on dev branch after creating new branch from master.
 
-2- Rebase: It merges commit of master to dev and dev to master. So Master and dev branch have all commits of each other. It is to sync both the branches. Rebase do the new commits.
+2- Rebase: Same as merge. It merges commit dev to master, but creates a new commit.
 
 # git checkout master
 # git rebase dev
