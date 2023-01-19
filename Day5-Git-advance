@@ -75,6 +75,8 @@ git merge branch_name : HEAD of both branch will point at same commit. Also all 
 # git checkout dev
 # git rebase master
 
+In merge the commit ids are maintained same on other branch, incase of rebase the commit id are changed while rebasing the other branch in main branch and vice versa
+
 
 - Squash: To combine all he commits into one. While merging the branch in another branch all the commits are merge, so to avoid lots of commit logs we can use squash to combine all commit logs in one
 
