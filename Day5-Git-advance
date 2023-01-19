@@ -38,7 +38,7 @@ hard reset: It forcefully reset the branch. It will delete the files/content whi
 But if we perform soft reset it will comes back to previous commit but will not delete file1.
 
 
-6- Cherry pick: To go to particular commit.
+6- Cherry pick: To pick up a perticular commit. If we need particular feature or commit from other branch to master branch we can cherry pick that feature in master branch.
 
 git cherry-pick commit_id
 
