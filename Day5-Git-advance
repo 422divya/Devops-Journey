@@ -63,19 +63,17 @@ So if conflict happens when we cherry pick or rebasethen fix conflict and then c
 
 - Merge and Rebase:
 
-1- Merge: To merge the commit of branches. To merge the changes from dev branch to master branch you can use merge which will add the latest commit of dev branch to the master branch.
+1- Merge: To merge the commit of branches. To merge the changes from dev branch to master branch you can use merge which will add the latest commit of dev branch to the master branch. It will not perform new commits.
 
 git merge branch_name : HEAD of both branch will point at same commit. Also all the commit of dev branch will be shown in "git log --oneline" which was modified on dev branch after creating new branch from master.
 
-2- Rebase: It merges commit of master to dev and dev to master. So Master and dev branch have all commits of each other. It is to sync both the branches.
+2- Rebase: It merges commit of master to dev and dev to master. So Master and dev branch have all commits of each other. It is to sync both the branches. Rebase do the new commits.
 
 # git checkout master
 # git rebase dev
 
 # git checkout dev
 # git rebase master
-
-In merge the commit ids are maintained same on other branch, incase of rebase the commit id are changed while rebasing the other branch in main branch and vice versa
 
 
 - Squash: To combine all he commits into one. While merging the branch in another branch all the commits are merge, so to avoid lots of commit logs we can use squash to combine all commit logs in one
