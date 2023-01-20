@@ -1,8 +1,9 @@
-**Docker**
+# Docker
 
-# What is Docker
+**What is Docker?**
+==> Docker is the open source contanerization tool. Using Docker we can containerized the application and run it on any system without checking for dependency for that applicatio on the system as the container will have all the dependencies required for that particular application.
 
-Docker engine: When we install docker docker engine is also installed. dockerd(docker daemon) which runs in background. Docker engine is installed on top of base OS. It provides required resources to application from the base OS. It gives virtual environment.
+**Docker engine**: When we install docker docker engine is also installed. dockerd(docker daemon) which runs in background. Docker engine is installed on top of base OS. It provides required resources to application from the base OS. It gives virtual environment.
 
 **Install Docker**
 
