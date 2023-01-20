@@ -12,7 +12,11 @@ Docker Hub: It has Docker images
 
 Docker File ==> Docker Image ==> Container
 
-Commands:
+
+Port mapping: To get access of the container we need to expose the port.
+
+
+**Commands:**
 
 `docker ps` : To list the running container
 
@@ -30,10 +34,13 @@ Commands:
 
 `docker run -it --name container_name -e MYSQL_ROOT_PASSWORD=abc@123 downloaded_image_name` : To pass environmental variable.
 
+`docker run -d --name container_name -p port-no-system:port-no-container downloaded_image_name : Running container and mapping port of application running inside container with port on the system.
+
 `docker rm container_id` :To remove/delete the container. Container id we will get by `docker ps -a` command.
 
 `docker exec -it container_id bash`: To acces the container.
 
+`docker stop container_id` : To stop container before removing it.
 
 
 
