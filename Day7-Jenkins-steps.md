@@ -8,6 +8,6 @@ Dashboard ==> New item ==> Created free style Project ==> Provided github reposi
 
 => While running job got failed with below error:
 
-ERROR: Couldn't find any revision to build. Verify the repository and branch configuration for this job.
+`ERROR: Couldn't find any revision to build. Verify the repository and branch configuration for this job.`
 
 => Saw that the repository was not in the master branch and in job master branch was specified under "Branch Specifier (blank for 'any')". So It was failing. Cahnges it to main and job got executed successfully.
