@@ -18,4 +18,18 @@ Dashboard ==> New item ==> Created free style Project ==> Provided github reposi
 
 ==> Github plugin is required to use the webhook. This plugin runs service in the background which monitors the github webhook url. If any trigger is done on that url the in whichever jenkins job the github hook option is selected and has the same repository it is executed.
 
+**3-**While pushing the image in the Docker hub it was failing with below error while substituting the variable with the username and password of Docker hub.
 
+`/var/lib/jenkins/workspace/job-pipeline@tmp/durable-33029181/script.sh: line 1: ${env.dockerusername}: bad substitution`
+
+Below is the correct syntax. When trying to give single quote it was taking the ${env.dockerusernam} as the value and not as variable. After giving double quotes the error got resolved:
+
+`stage ('Push the Docker image') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub1', usernameVariable: 'dockerusername', passwordVariable: 'hubpassword')]) {
+                    
+            
+                sh "docker login -u ${env.dockerusername} -p ${env.hubpassword}"
+                sh "docker push divya422/reach-jango"
+                }`
+                
