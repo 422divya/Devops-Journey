@@ -26,7 +26,7 @@ Below is the correct syntax. When trying to give single quote it was taking the 
 
 `stage ('Push the Docker image') {`
           `steps {`
-                `withCredentials([usernamePassword(credentialsId: 'dockerhub1', usernameVariable: 'dockerusername', passwordVariable: 'hubpassword')]) {
+                `withCredentials([usernamePassword(credentialsId: 'dockerhub1', usernameVariable: 'dockerusername', passwordVariable: 'hubpassword')]) {`
                     
             
                 sh "docker login -u ${env.dockerusername} -p ${env.hubpassword}"
