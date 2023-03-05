@@ -16,5 +16,6 @@ Dashboard ==> New item ==> Created free style Project ==> Provided github reposi
 
 => When the github to jenkins webhook is configured on the github repository, then if any changes are commited on that repository it will trigger the jenkins job in which the webhook option is selected. 
 
+==> Github plugin is required to use the webhook. This plugin runs service in the background which monitors the github webhook url. If any trigger is done on that url the in whichever jenkins job the github hook option is selected and has the same repository it is executed.
 
 
