@@ -25,6 +25,7 @@ Dashboard ==> New item ==> Created free style Project ==> Provided github reposi
 Below is the correct syntax. When trying to give single quote it was taking the ${env.dockerusernam} as the value and not as variable. After giving double quotes the error got resolved:
 
 ============
+
 `stage ('Push the Docker image') {`
           `steps {`
                 `withCredentials([usernamePassword(credentialsId: 'dockerhub1', usernameVariable: 'dockerusername', passwordVariable: 'hubpassword')]) {`
