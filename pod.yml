@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: todo-app
+  namespace: django-todo-ap
+
+spec:
+  containers:
+    - name: todo-container
+      image: divya422/reach-jango:latest
+      ports:
+       - containerPort: 8001

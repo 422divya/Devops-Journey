@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-db
+  labels:
+    app: mysql
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+  spec:
+    containers:
+      - name: mysql-db
+        image: divya422/mysql
+        ports:
+          - containerPort: 3306
+    secret:
+      secretName: secret-file
