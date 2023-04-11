@@ -184,3 +184,4 @@ resource "docker_container" "container" {
 Reference:
                                                        
 https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs/resources/container
+https://github.com/kreuzwerker/terraform-provider-docker
