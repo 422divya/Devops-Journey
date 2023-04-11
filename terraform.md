@@ -126,8 +126,10 @@ resource "docker_image" "nginx"  {
 }
 
 resource "docker_container" "container" {
-  image = "docker_image.nginx.latest"          <<< ====When using this it was throwing error
+  image = "docker_image.nginx.latest"          <<< ====When using this it was throwing above error as it was written in double quotes
+  
   name = "nginx-container"
+  
   ports {
      internal = 80
      external = 80
@@ -143,7 +145,7 @@ terraform {
    required_providers {
     docker = {
      source = "kreuzwerker/docker"
-     version = "3.0.2"
+     version = "3.0.2"       <<< = When using latest docker provider
 }
 }
 }
@@ -156,11 +158,24 @@ resource "docker_image" "nginx"  {
 }
 
 resource "docker_container" "container" {
-  image = docker_image.nginx.image_id      <<<<= changin to this it executed successfully
+  image = docker_image.nginx.image_id      <<<<= changing to this it executed successfully. As the "latest tag" was deprecated and removed in latest docker provided version so it will not work we need to give image_id instead of it.
   
   name = "nginx-container"
+  
   ports {
      internal = 80
      external = 80
 }
 }
+
+
+ ==========                                                      
+ root@ip-x-x-x-x]# terraform apply
+╷
+│ Error: Unsupported attribute
+│ 
+│   on ngnix-instance.tf line 19, in resource "docker_container" "container":
+│   19:   image = docker_image.nginx.latest
+│ 
+│ This object has no argument, nested block, or exported attribute named "latest".
+==========
