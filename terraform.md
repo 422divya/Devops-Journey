@@ -34,13 +34,15 @@ Planning failed. Terraform encountered an error while generating this plan.
   
   [root@ip-x-x-x-x]# terraform apply
 
+ docker_image.nginx: Refreshing state... [id=sha256:080ed0ed8312deca92e9a769b518cdfa20f5278359bd156f3469dd8fa532db6bnginx:latest]
+
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
 
-  # docker_container.container_ngnix will be created
-  + resource "docker_container" "container_ngnix" {
+  # docker_container.container will be created
+  + resource "docker_container" "container" {
       + attach                                      = false
       + bridge                                      = (known after apply)
       + command                                     = (known after apply)
@@ -51,13 +53,13 @@ Terraform will perform the following actions:
       + exit_code                                   = (known after apply)
       + hostname                                    = (known after apply)
       + id                                          = (known after apply)
-      + image                                       = "docker_image.ngnix:latest"
+      + image                                       = "docker_image.nginx.image_id"
       + init                                        = (known after apply)
       + ipc_mode                                    = (known after apply)
       + log_driver                                  = (known after apply)
       + logs                                        = false
       + must_run                                    = true
-      + name                                        = "ngnix-container"
+      + name                                        = "nginx-container"
       + network_data                                = (known after apply)
       + read_only                                   = false
       + remove_volumes                              = true
@@ -82,16 +84,7 @@ Terraform will perform the following actions:
         }
     }
 
-  # docker_image.ngnix will be created
-  + resource "docker_image" "ngnix" {
-      + id           = (known after apply)
-      + image_id     = (known after apply)
-      + keep_locally = false
-      + name         = "ngnix:latest"
-      + repo_digest  = (known after apply)
-    }
-
-Plan: 2 to add, 0 to change, 0 to destroy.
+Plan: 1 to add, 0 to change, 0 to destroy.
 
 Do you want to perform these actions?
   Terraform will perform the actions described above.
@@ -99,19 +92,74 @@ Do you want to perform these actions?
 
   Enter a value: yes
 
-docker_container.container_ngnix: Creating...
-docker_image.ngnix: Creating...
+docker_container.container: Creating...
 ╷
-│ Error: Unable to read Docker image into resource: unable to pull image ngnix:latest: error pulling image ngnix:latest: Error response from daemon: pull access denied for ngnix, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
+│ Error: Unable to create container with image docker_image.nginx.image_id: unable to pull image docker_image.nginx.image_id: error pulling image docker_image.nginx.image_id: Error response from daemon: pull access denied for docker_image.nginx.image_id, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
 │ 
-│   with docker_image.ngnix,
-│   on ngnix-instance.tf line 11, in resource "docker_image" "ngnix":
-│   11: resource "docker_image" "ngnix"{
-│ 
-╵
-╷
-│ Error: Unable to create container with image docker_image.ngnix:latest: unable to pull image docker_image.ngnix:latest: error pulling image docker_image.ngnix:latest: Error response from daemon: pull access denied for docker_image.ngnix, repository does not exist or may require 'docker login': denied: requested access to the resource is denied
-│ 
-│   with docker_container.container_ngnix,
-│   on ngnix-instance.tf line 16, in resource "docker_container" "container_ngnix":
-│   16: resource "docker_container" "container_ngnix"{
+│   with docker_container.container,
+│   on ngnix-instance.tf line 18, in resource "docker_container" "container":
+│   18: resource "docker_container" "container" {
+  
+  
+  
+  
+  Above error got solved by changing the below code 
+  
+  From
+  
+  # cat ngnix-instance.tf 
+terraform {
+
+   required_providers {
+    docker = {
+     source = "kreuzwerker/docker"
+     version = "3.0.2"   <<< with this docker provider version
+}
+}
+}
+
+provider "docker" {}
+
+resource "docker_image" "nginx"  {
+  name = "nginx:latest"
+  keep_locally = false
+}
+
+resource "docker_container" "container" {
+  image = "docker_image.nginx.latest"          <<< ====When using this it was throwing error
+  name = "nginx-container"
+  ports {
+     internal = 80
+     external = 80
+}
+}
+  
+  
+To:
+  
+  # cat ngnix-instance.tf 
+terraform {
+
+   required_providers {
+    docker = {
+     source = "kreuzwerker/docker"
+     version = "3.0.2"
+}
+}
+}
+
+provider "docker" {}
+
+resource "docker_image" "nginx"  {
+  name = "nginx:latest"
+  keep_locally = false
+}
+
+resource "docker_container" "container" {
+  image = docker_image.nginx.image_id      <<<<= changin to this it executed successfully
+  name = "nginx-container"
+  ports {
+     internal = 80
+     external = 80
+}
+}
