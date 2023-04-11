@@ -179,3 +179,8 @@ resource "docker_container" "container" {
 │ 
 │ This object has no argument, nested block, or exported attribute named "latest".
 ==========
+
+                                                       
+Reference:
+                                                       
+https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs/resources/container
