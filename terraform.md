@@ -41,7 +41,7 @@ Terraform used the selected providers to generate the following execution plan. 
 
 Terraform will perform the following actions:
 
-  # docker_container.container will be created
+  docker_container.container will be created
   + resource "docker_container" "container" {
       + attach                                      = false
       + bridge                                      = (known after apply)
