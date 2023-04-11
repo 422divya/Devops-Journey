@@ -157,6 +157,7 @@ resource "docker_image" "nginx"  {
 
 resource "docker_container" "container" {
   image = docker_image.nginx.image_id      <<<<= changin to this it executed successfully
+  
   name = "nginx-container"
   ports {
      internal = 80
