@@ -186,3 +186,63 @@ Reference:
 https://registry.terraform.io/providers/kreuzwerker/docker/latest/docs/resources/container
 https://github.com/kreuzwerker/terraform-provider-docker
 https://dev.to/af/hashicorp-configuration-language-hcl-blocks-5627
+                                                       
+                                                       
+** Terraform Meta Argument **
+                                                       
+Was getting below error while using for_each meta arument.
+The "count" and "for_each" meta-arguments are mutually-exclusive, only one should be used to be explicit about the number of resources to be created.  
+ 
+On checking found that I had used the count meta argument along with for_each due to which it was throwing the above error, as below:
+                                                       
+terraform {
+
+required_providers {
+  aws = {
+   version = "~>4.16"
+   source = "hashicorp/aws"
+
+}
+
+}
+}
+
+provider "aws" {
+ region = "ap-northeast-1"
+ 
+}
+
+resource "aws_instance" "instance_meta" {
+   for_each = toset(var.instance.name)
+   ami = var.instance.ami 
+   count = var.instances                                               
+   instance_type = var.instance.type
+   tags = {
+    Name = each.key
+}
+
+}                                                       
+
+                                                       
+                                                       
+# cat variable.tf 
+variable "instance" {
+ type = object({
+   name = list(string)
+   instances = number
+   type = string
+   ami = string
+
+})
+
+default = {
+ instances = 2
+ type = "t2.micro"
+ ami = "ami-01b32aa8589df6208"
+ name = ["ec2-meta-instance", "2instance"]
+
+
+}
+
+}                                                       
+                                                       
